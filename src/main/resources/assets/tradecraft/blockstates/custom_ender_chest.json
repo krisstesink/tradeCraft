@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "tradecraft:block/custom_ender_chest" }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "tradecraft:block/custom_ender_chest"
+  }
+}
