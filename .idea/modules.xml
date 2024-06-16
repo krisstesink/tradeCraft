@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/tradeCraft.iml" filepath="$PROJECT_DIR$/tradeCraft.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tradeCraft.client.iml" filepath="$PROJECT_DIR$/.idea/modules/tradeCraft.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tradeCraft.main.iml" filepath="$PROJECT_DIR$/.idea/modules/tradeCraft.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tradeCraft.test.iml" filepath="$PROJECT_DIR$/.idea/modules/tradeCraft.test.iml" />
     </modules>
   </component>
 </project>
