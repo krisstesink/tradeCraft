@@ -7,6 +7,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import idkhi.tradecraft.order.Order;
 import idkhi.tradecraft.order.OrderManager;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 
@@ -29,8 +30,12 @@ public class CommandRegistrar {
                                 .then(argument("amount", IntegerArgumentType.integer(1))
                                         .executes(context -> {
                                             try {
-                                                String item = StringArgumentType.getString(context, "item");
+                                                ServerCommandSource source = context.getSource();
+                                                PlayerEntity player = source.getPlayer();
+                                                System.out.println(player.toString());
+                                                String itemName = StringArgumentType.getString(context, "item");
                                                 int amount = IntegerArgumentType.getInteger(context, "amount");
+                                                String item = StringArgumentType.getString(context, "item");
                                                 orderManager.placeOrder(item, amount, 0.0, Order.OrderType.BUY_MARKET);
                                                 context.getSource().sendFeedback(() -> Text.of("Placed market buy order for " + amount + " " + item), false);
                                             } catch (Exception e) {
