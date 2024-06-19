@@ -1,0 +1,46 @@
+{
+  "metal_detector_found_ore": {
+    "subtitle": "sounds.tradecraft.metal_detector_found_ore",
+    "sounds": [
+      "tradecraft:metal_detector_found_ore"
+    ]
+  },
+  "sound_block_break": {
+    "subtitle": "tutorialmod.sound_block_break",
+    "sounds": [
+      "tradecraft:sound_block_break"
+    ]
+  },
+  "sound_block_step": {
+    "subtitle": "tutorialmod.sound_block_step",
+    "sounds": [
+      "tradecraft:sound_block_step"
+    ]
+  },
+  "sound_block_place": {
+    "subtitle": "tutorialmod.sound_block_place",
+    "sounds": [
+      "tradecraft:sound_block_place"
+    ]
+  },
+  "sound_block_hit": {
+    "subtitle": "tutorialmod.sound_block_hit",
+    "sounds": [
+      "tradecraft:sound_block_hit"
+    ]
+  },
+  "sound_block_fall": {
+    "subtitle": "tutorialmod.sound_block_fall",
+    "sounds": [
+      "tradecraft:sound_block_fall"
+    ]
+  },
+  "bar_brawl": {
+    "sounds": [
+      {
+        "name": "tradecraft:bar_brawl",
+        "stream": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "tradecraft:block/ruby_block",
+    "side": "tradecraft:block/ruby_block",
+    "top": "tradecraft:block/ruby_block"
+  }
+}

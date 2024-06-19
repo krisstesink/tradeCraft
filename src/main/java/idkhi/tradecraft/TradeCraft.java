@@ -1,19 +1,12 @@
 package idkhi.tradecraft;
 
-import idkhi.tradecraft.block.BankBlock;
-import idkhi.tradecraft.block.BankBlockEntity;
+import idkhi.tradecraft.block.ModBlocks;
+import idkhi.tradecraft.block.entity.ModBlockEntities;
 import idkhi.tradecraft.commands.CommandRegistrar;
+import idkhi.tradecraft.item.ModItemGroups;
+import idkhi.tradecraft.item.ModItems;
+import idkhi.tradecraft.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,20 +15,22 @@ public class TradeCraft implements ModInitializer {
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger("tradecraft");
-	public static BlockEntityType<BankBlockEntity> BANK_BLOCK_ENTITY;
-	public static final Block BANK_BLOCK = new BankBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+	public static final String MOD_ID = "tradecraft";
 
 
 	@Override
 	public void onInitialize() {
 		CommandRegistrar.registerCommands();
-		Registry.register(Registries.ITEM,
-				new Identifier("tradecraft", "bank"), new BlockItem(BANK_BLOCK, new FabricItemSettings()));
-		Registry.register(Registries.BLOCK, new Identifier("tradecraft", "bank"), BANK_BLOCK);
-		BANK_BLOCK_ENTITY = Registry.register(
-				Registries.BLOCK_ENTITY_TYPE,
-				new Identifier("tradecraft", "custom_block_entity"),
-				FabricBlockEntityTypeBuilder.create(BankBlockEntity::new, BANK_BLOCK).build());
+		ModItemGroups.registerItemGroups();
+
+		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
+
+
+
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
+
 		LOGGER.info("Hello Fabric world!");
 	}
 }

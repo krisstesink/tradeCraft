@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "tradecraft:raw_ruby_block",
+    "tradecraft:ruby_block",
+    "tradecraft:ruby_ore",
+    "tradecraft:deepslate_ruby_ore",
+    "tradecraft:nether_ruby_ore",
+    "tradecraft:end_stone_ruby_ore",
+    "tradecraft:sound_block"
+  ]
+}

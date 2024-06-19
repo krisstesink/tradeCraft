@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "tradecraft:block/ruby_slab"
+    },
+    "type=double": {
+      "model": "tradecraft:block/ruby_block"
+    },
+    "type=top": {
+      "model": "tradecraft:block/ruby_slab_top"
+    }
+  }
+}

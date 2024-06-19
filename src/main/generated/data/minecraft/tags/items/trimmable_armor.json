@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "tradecraft:ruby_helmet",
+    "tradecraft:ruby_chestplate",
+    "tradecraft:ruby_leggings",
+    "tradecraft:ruby_boots"
+  ]
+}
