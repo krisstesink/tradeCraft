@@ -1,6 +1,7 @@
 package idkhi.tradecraft;
 
 import idkhi.tradecraft.block.ModBlocks;
+import idkhi.tradecraft.screen.CustomEnderChestScreen;
 import idkhi.tradecraft.screen.GemPolishingScreen;
 import idkhi.tradecraft.screen.ModScreenHandlers;
 import net.fabricmc.api.ClientModInitializer;
@@ -15,5 +16,6 @@ public class TradeCraftClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RUBY_TRAPDOOR, RenderLayer.getCutout());
 
 		HandledScreens.register(ModScreenHandlers.GEM_POLISHING_SCREEN_HANDLER, GemPolishingScreen::new);
+		HandledScreens.register(ModScreenHandlers.CUSTOM_ENDER_CHEST_SCREEN_HANDLER, CustomEnderChestScreen::new);
 	}
 }

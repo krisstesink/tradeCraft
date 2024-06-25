@@ -14,6 +14,7 @@
   "item.tradecraft.ruby_sword": "Ruby Sword",
   "item.tradecraft.ruby_hoe": "Ruby Hoe",
 
+
   "item.tradecraft.ruby_helmet": "Ruby Helmet",
   "item.tradecraft.ruby_chestplate": "Ruby Chestplate",
   "item.tradecraft.ruby_leggings": "Ruby Leggings",
@@ -51,6 +52,7 @@
   "block.tradecraft.dahlia": "Dahlia",
 
   "block.tradecraft.gem_polishing_station": "Gem Polishing Station",
+  "block.tradecraft.custom_ender_chest": "Bank",
 
   "entity.minecraft.villager.sound_master": "Soundmaster",
 

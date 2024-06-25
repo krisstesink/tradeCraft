@@ -40,6 +40,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.RUBY_TRAPDOOR);
 
                         entries.add(ModBlocks.GEM_POLISHING_STATION);
+                        entries.add(ModBlocks.CUSTOM_ENDER_CHEST);
 
 
                     }).build());

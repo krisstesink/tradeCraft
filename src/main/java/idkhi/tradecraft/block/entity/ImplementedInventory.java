@@ -72,6 +72,8 @@ public interface ImplementedInventory extends SidedInventory {
         return result;
     }
 
+
+
     /**
      * Returns true if the stack can be inserted in the slot at the side.
      *

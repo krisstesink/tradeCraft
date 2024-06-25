@@ -1,6 +1,7 @@
 package idkhi.tradecraft.block;
 
 import idkhi.tradecraft.TradeCraft;
+import idkhi.tradecraft.block.custom.CustomEnderChestBlock;
 import idkhi.tradecraft.block.custom.GemPolishingStationBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -53,6 +54,10 @@ public class ModBlocks {
 
     public static final Block GEM_POLISHING_STATION = registerBlock("gem_polishing_station",
             new GemPolishingStationBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
+    public static final Block CUSTOM_ENDER_CHEST = registerBlock("custom_ender_chest",
+            new CustomEnderChestBlock(FabricBlockSettings.copyOf(Blocks.ENDER_CHEST).nonOpaque()));
+
 
 
     private static Block registerBlock(String name, Block block) {

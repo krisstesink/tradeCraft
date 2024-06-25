@@ -14,6 +14,10 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(GemPolishingStationBlockEntity::new,
                             ModBlocks.GEM_POLISHING_STATION).build());
 
+    public static final BlockEntityType<CustomEnderChestBlockEntity> CUSTOM_ENDER_CHEST_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(TradeCraft.MOD_ID, "custom_ender_chest"),
+                    FabricBlockEntityTypeBuilder.create(CustomEnderChestBlockEntity::new,
+                            ModBlocks.GEM_POLISHING_STATION).build());
     public static void registerBlockEntities() {
         TradeCraft.LOGGER.info("Registering Block Entities for " + TradeCraft.MOD_ID);
     }
