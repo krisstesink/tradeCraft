@@ -101,9 +101,7 @@ public class CustomEnderChestBlockEntity extends BlockEntity implements Extended
 
     @Override
     public DefaultedList<ItemStack> getItems() {
-        if (this.currentPlayerUuid != null) {
-            return getOrCreateInventory(this.currentPlayerUuid);
-        }
-        return DefaultedList.ofSize(27, ItemStack.EMPTY);  // Default empty inventory
+        return getOrCreateInventory(this.currentPlayerUuid);
+
     }
 }
