@@ -12,8 +12,6 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-import java.util.List;
-
 public class CustomEnderChestScreenHandler extends ScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
@@ -24,34 +22,12 @@ public class CustomEnderChestScreenHandler extends ScreenHandler {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
                 new ArrayPropertyDelegate(27));
     }
-
-    // Existing constructor
-//
-//    public CustomEnderChestScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf buf) {
-//        this(syncId, playerInventory, buf.readBlockPos(), buf.readUuid(), new ArrayPropertyDelegate(0));
-//    }
-//
-//    public CustomEnderChestScreenHandler(int syncId, PlayerInventory playerInventory, BlockPos pos, UUID playerUuid, PropertyDelegate propertyDelegate) {
-//        super(ModScreenHandlers.CUSTOM_ENDER_CHEST_SCREEN_HANDLER, syncId);
-//        this.playerUuid = playerUuid;
-//        DefaultedList<ItemStack> inventoryList = CustomEnderChestInventoryManager.getOrCreateInventory(playerUuid);
-//        this.inventory = new SimpleInventory(inventoryList.size()) {
-//            @Override
-//            public int size() {
-//                return inventoryList.size();
-//            }
     public CustomEnderChestScreenHandler(int syncId, PlayerInventory playerInventory,
                                          BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
 
         super(ModScreenHandlers.CUSTOM_ENDER_CHEST_SCREEN_HANDLER, syncId);
-        CustomEnderChestBlockEntity blockEnt = (CustomEnderChestBlockEntity) blockEntity;
         checkSize(((Inventory) blockEntity), 27);
         this.inventory = ((Inventory) blockEntity);
-        List<ItemStack> itemStackList = blockEnt.getOrCreateInventory(blockEnt.currentPlayerUuid);
-        for(int i = 0; i< itemStackList.size(); i++) {
-            this.inventory.setStack(i, itemStackList.get(i));
-        }
-        this.inventory.markDirty();
         inventory.onOpen(playerInventory.player);
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
@@ -76,6 +52,8 @@ public class CustomEnderChestScreenHandler extends ScreenHandler {
         for (i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
+
+        addProperties(arrayPropertyDelegate);
     }
 
     @Override
@@ -110,9 +88,6 @@ public class CustomEnderChestScreenHandler extends ScreenHandler {
     @Override
     public void onContentChanged(Inventory inventory) {
         super.onContentChanged(inventory);
-        if (inventory == this.inventory) {
-            // Ensure the inventory state is properly sent to the client
-            this.sendContentUpdates();
-        }
+        this.sendContentUpdates();
     }
 }

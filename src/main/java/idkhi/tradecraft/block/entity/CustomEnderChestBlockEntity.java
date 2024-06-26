@@ -68,13 +68,22 @@ public class CustomEnderChestBlockEntity extends BlockEntity implements Extended
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, getOrCreateInventory(this.currentPlayerUuid));
+        // Write the player's inventory to the NBT compound
+        if (this.currentPlayerUuid != null) {
+            Inventories.writeNbt(nbt, getOrCreateInventory(this.currentPlayerUuid));
+            nbt.putUuid("currentPlayerUuid", this.currentPlayerUuid);
+        }
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        Inventories.readNbt(nbt, getOrCreateInventory(this.currentPlayerUuid));
+        // Read the player's inventory from the NBT compound
+        UUID playerUuid = nbt.getUuid("currentPlayerUuid");
+        this.currentPlayerUuid = playerUuid;
+        if (playerUuid != null) {
+            Inventories.readNbt(nbt, getOrCreateInventory(playerUuid));
+        }
     }
 
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
@@ -86,14 +95,6 @@ public class CustomEnderChestBlockEntity extends BlockEntity implements Extended
     public static void tick(World world, BlockPos pos, BlockState state, CustomEnderChestBlockEntity be) {
         if(world.isClient()) {
             return;
-        }
-    }
-
-    @Override
-    public void markDirty() {
-        super.markDirty();
-        if (!world.isClient) {
-            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
         }
     }
 
