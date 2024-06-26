@@ -68,24 +68,13 @@ public class CustomEnderChestBlockEntity extends BlockEntity implements Extended
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        for (Map.Entry<UUID, DefaultedList<ItemStack>> entry : playerInventories.entrySet()) {
-            NbtCompound inventoryNbt = new NbtCompound();
-            Inventories.writeNbt(inventoryNbt, entry.getValue());
-            nbt.put(entry.getKey().toString(), inventoryNbt);
-        }
+        Inventories.writeNbt(nbt, getOrCreateInventory(this.currentPlayerUuid));
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        playerInventories.clear();
-        for (String key : nbt.getKeys()) {
-            UUID playerUuid = UUID.fromString(key);
-            NbtCompound inventoryNbt = nbt.getCompound(key);
-            DefaultedList<ItemStack> inventory = DefaultedList.ofSize(INVENTORY_SIZE, ItemStack.EMPTY);
-            Inventories.readNbt(inventoryNbt, inventory);
-            playerInventories.put(playerUuid, inventory);
-        }
+        Inventories.readNbt(nbt, getOrCreateInventory(this.currentPlayerUuid));
     }
 
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
@@ -100,12 +89,19 @@ public class CustomEnderChestBlockEntity extends BlockEntity implements Extended
         }
     }
 
+    @Override
+    public void markDirty() {
+        super.markDirty();
+        if (!world.isClient) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
+    }
 
 
     @Override
     public DefaultedList<ItemStack> getItems() {
         if (this.currentPlayerUuid != null) {
-            return CustomEnderChestInventoryManager.getOrCreateInventory(this.currentPlayerUuid);
+            return getOrCreateInventory(this.currentPlayerUuid);
         }
         return DefaultedList.ofSize(27, ItemStack.EMPTY);  // Default empty inventory
     }

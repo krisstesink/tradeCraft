@@ -49,9 +49,9 @@ public class CustomEnderChestScreenHandler extends ScreenHandler {
         this.inventory = ((Inventory) blockEntity);
         List<ItemStack> itemStackList = blockEnt.getOrCreateInventory(blockEnt.currentPlayerUuid);
         for(int i = 0; i< itemStackList.size(); i++) {
-            this.inventory.setStack(0, itemStackList.get(i));
+            this.inventory.setStack(i, itemStackList.get(i));
         }
-
+        this.inventory.markDirty();
         inventory.onOpen(playerInventory.player);
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
